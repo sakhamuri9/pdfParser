@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+from app.core.database import Base
 
 class Topic(Base):
     __tablename__ = "topics"

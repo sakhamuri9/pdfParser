@@ -1,12 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
-from app.api.endpoints import router
-from app.core.database import Base, engine
 from app.models.pdf_content import Topic, Heading, Subheading
+from app.core.database import Base, engine
+from app.api.endpoints import router
 
 app = FastAPI(title="PDF Parser API", description="API for parsing PDF files and storing content by topics")
 

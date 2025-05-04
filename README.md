@@ -13,7 +13,7 @@ A Python microservice that parses PDF files and organizes content by topics, hea
 
 - Python 3.12
 - FastAPI
-- SQLAlchemy (with SQLite in-memory database)
+- SQLAlchemy (with SQLite database)
 - PDFPlumber for PDF parsing
 
 ## API Endpoints
@@ -35,7 +35,12 @@ cd pdfParser
 poetry install
 ```
 
-3. Run the application:
+3. Initialize the database:
+```bash
+poetry run python -m app.init_db
+```
+
+4. Run the application:
 ```bash
 poetry run python -m app.main
 ```
@@ -62,7 +67,15 @@ curl http://localhost:8000/api/topics/
 curl http://localhost:8000/api/topics/1
 ```
 
+## Deployment
+
+The microservice can be deployed to a cloud platform that supports Python applications:
+
+1. Ensure all dependencies are listed in the `pyproject.toml` file
+2. Initialize the database before starting the application
+3. Configure environment variables for production settings if needed
+
 ## Notes
 
-- The service uses an in-memory SQLite database, so data will be lost when the service is restarted.
-- For production use, consider configuring a persistent database.
+- The service uses a SQLite database file, which persists data between restarts
+- For production use, consider configuring a more robust database like PostgreSQL

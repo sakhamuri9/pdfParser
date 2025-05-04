@@ -4,7 +4,8 @@ import uvicorn
 
 from app.models.pdf_content import Topic, Heading, Subheading
 from app.core.database import Base, engine
-from app.api.endpoints import router
+from app.api.endpoints import router as pdf_router
+from app.api.ai_endpoints import router as ai_router
 
 app = FastAPI(title="PDF Parser API", description="API for parsing PDF files and storing content by topics")
 
@@ -18,7 +19,8 @@ app.add_middleware(
 
 Base.metadata.create_all(bind=engine)
 
-app.include_router(router, prefix="/api")
+app.include_router(pdf_router, prefix="/api")
+app.include_router(ai_router, prefix="/api/ai")
 
 @app.get("/")
 def read_root():

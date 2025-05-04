@@ -18,9 +18,14 @@ A Python microservice that parses PDF files and organizes content by topics, hea
 
 ## API Endpoints
 
+### PDF Parsing Endpoints
 - `POST /api/upload-pdf/`: Upload and parse a PDF file
 - `GET /api/topics/`: Get all topics with their headings and subheadings
 - `GET /api/topics/{topic_id}`: Get a specific topic by ID
+
+### AI Analysis Endpoints
+- `GET /api/ai/analyze/topics/`: Get all topics with AI-enhanced analysis separating theory from examples
+- `GET /api/ai/analyze/topics/{topic_id}`: Get a specific topic with AI-enhanced analysis
 
 ## Setup and Installation
 

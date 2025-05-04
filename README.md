@@ -40,12 +40,17 @@ cd pdfParser
 poetry install
 ```
 
-3. Initialize the database:
+3. Set up your OpenAI API key in the `.env` file:
+```bash
+echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
+```
+
+4. Initialize the database:
 ```bash
 poetry run python -m app.init_db
 ```
 
-4. Run the application:
+5. Run the application:
 ```bash
 poetry run python -m app.main
 ```
@@ -71,6 +76,25 @@ curl http://localhost:8000/api/topics/
 ```bash
 curl http://localhost:8000/api/topics/1
 ```
+
+### Get AI-enhanced analysis for a specific topic:
+
+```bash
+curl http://localhost:8000/api/ai/analyze/topics/1
+```
+
+This endpoint uses OpenAI to analyze the topic content and returns structured information with:
+- Key concepts and theoretical information
+- Java code examples (if any)
+- Usage examples and best practices
+
+### Get AI-enhanced analysis for all topics:
+
+```bash
+curl http://localhost:8000/api/ai/analyze/topics/
+```
+
+This endpoint analyzes all topics and returns structured information for each topic.
 
 ## Deployment
 
